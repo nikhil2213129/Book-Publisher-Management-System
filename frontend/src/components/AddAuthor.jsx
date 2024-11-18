@@ -7,7 +7,10 @@ const AddAuthor = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/api/authors', { name, bio }).then(() => {
+        const BASE_URL =
+    process.env.REACT_APP_BACKEND_URL ||
+    window.location.origin.replace('3000', '8080');
+        axios.post(`${BASE_URL}/api/authors`, { name, bio }).then(() => {
             alert('Author added!');
         });
     };
